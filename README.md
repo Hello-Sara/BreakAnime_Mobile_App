@@ -1,0 +1,1 @@
+commande deppart : npx expo start
