@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Image, TouchableOpacity, StyleSheet, Text, View, Dimensions,ActivityIndicator } from 'react-native';
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
+import Search from './pages/search/Search';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -48,6 +49,7 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Search" component={Search} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -68,7 +70,7 @@ function HomeScreen({ navigation }) {
       <TouchableOpacity style={[styles.button, styles.loginButton]} onPress={() => navigation.navigate('Login')}>
         <Text style={styles.btnText}>Connexion</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={[styles.button, styles.registerButton]} onPress={() => navigation.navigate('Register')}>
+      <TouchableOpacity style={[styles.button, styles.registerButton]} onPress={() => navigation.navigate('Search')}>
         <Text style={styles.btnText}>S'inscrire</Text>
       </TouchableOpacity>
     </View>
