@@ -2,11 +2,11 @@ import React from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import Navbar from '../../composants/navigation/Navbar.js';
 
-const Search = ({navigation}) => {
+const Account = ({navigation}) => {
     return (
         <View style={styles.container}>
             <ScrollView contentContainerStyle={styles.scrollView}>
-                <Text style={styles.text}>Section Recherche</Text>
+                <Text style={styles.text}>Compte de l'utilisateur</Text>
             </ScrollView>
             <View><Navbar navigation={navigation}/></View>
         </View>
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Search;
+export default Account;

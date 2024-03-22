@@ -3,6 +3,9 @@ import { Image, TouchableOpacity, StyleSheet, Text, View, Dimensions,ActivityInd
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 import Search from './pages/search/Search';
+import Quiz from './pages/quiz/Quiz';
+import List from './pages/list/List';
+import Account from './pages/account/Account';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -50,6 +53,9 @@ export default function App() {
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Search" component={Search} />
+        <Stack.Screen name="Quiz" component={Quiz} />
+        <Stack.Screen name="List" component={List} />
+        <Stack.Screen name="Account" component={Account} />
       </Stack.Navigator>
     </NavigationContainer>
   );

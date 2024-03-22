@@ -12,7 +12,7 @@ const Login = ({ navigation }) => {
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
 
   const handleLogin = () => {
-    // Perform login logic here
+    navigation.navigate('Search');
   };
 
   return (

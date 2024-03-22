@@ -2,11 +2,11 @@ import React from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import Navbar from '../../composants/navigation/Navbar.js';
 
-const Search = ({navigation}) => {
+const List = ({navigation}) => {
     return (
         <View style={styles.container}>
             <ScrollView contentContainerStyle={styles.scrollView}>
-                <Text style={styles.text}>Section Recherche</Text>
+                <Text style={styles.text}>Section Liste</Text>
             </ScrollView>
             <View><Navbar navigation={navigation}/></View>
         </View>
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Search;
+export default List;
