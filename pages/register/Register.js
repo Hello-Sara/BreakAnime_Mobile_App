@@ -13,26 +13,24 @@ const Register = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
-  
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
-
+  const [generalConditions, setToggleGeneralConditions] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
 
   const handleRegister = () => {
-    axios.post('http://167.99.194.218/api/auth/register', {
+    axios.post('http://167.99.194.218:3000/api/auth/register', {
       name: name,
       email: email, 
       username: username,
       password: password,
     })
     .then(response => {
+      console.log('response', response);
       // // Stockez le token d'authentification pour une utilisation future
-      // localStorage.setItem('authToken', response.data.token);
+      //localStorage.setItem('authToken', response.data.token);
       // // Mettez à jour l'état pour indiquer que l'enregistrement a réussi
-      // setRegisterStatus('Registration successful!');
+      alert('Bienvenue dans BreakAnime !')
       navigation.navigate('Search');
     })
     .catch(error => {
@@ -46,11 +44,96 @@ const Register = ({ navigation }) => {
   };
 
   const ComfirmRegister = () => {
-    if (password == confirmPassword) {
+    if (checkForm()) {
       handleRegister();
-    } else {
-      alert("Les mots de passe ne correspondent pas");
     }
+  }
+
+  const checkForm = () => { 
+    return checkUserInfo() && checkPasswords() && checkConditions();
+  }
+
+  const checkUserInfo = () => {
+    let status = true;
+
+    if(name.length < 1) {
+      alert("Le nom ne peux pas être vide");
+      status = false;
+    }
+
+    if(email.length < 1) {
+      alert("L'email ne peux pas être vide");
+      status = false;
+    }
+
+    if(email.indexOf('@') == -1) {
+      alert("L'email n'est pas valide");
+      status = false;
+    }
+
+    if(email.indexOf('.') == -1) {
+      alert("L'email n'est pas valide");
+      status = false;
+    }
+
+    if(username.length < 1) {
+      alert("Le nom d'utilisateur ne peux pas être vide");
+      status = false;
+    }
+
+    if(username.length < 4 || username.length > 16) {
+      alert("Le nom d'utilisateur doit contenir entre 4 et 16 caractères");
+      status = false;
+    }
+
+    return status;
+  }
+
+  const checkPasswords = () => {
+    let status = true;
+    if(password.length < 1) {
+      alert("Le mot de passe ne peux pas être vide");
+      status = false;
+    } 
+
+    if(confirmPassword.length < 1) {
+      alert("Le mot de passe de confirmation ne peux pas être vide");
+      status = false;
+    }
+
+    if(password.length < 6) {
+      alert("Le mot de passe doit contenir au moins 6 caractères");
+      status = false;
+    }
+
+    if(confirmPassword.length < 6) {
+      alert("Le mot de passe de confirmation doit contenir au moins 6 caractères");
+      status = false;
+    }
+
+    if(password.length > 16) {
+      alert("Le mot de passe doit contenir au maximum 16 caractères");
+      status = false;
+    }
+
+    if(confirmPassword.length > 16) {
+      alert("Le mot de passe de confirmation doit contenir au maximum 16 caractères");
+      status = false;
+    }
+
+    if(password != confirmPassword) {
+      alert("Les mots de passe ne correspondent pas");
+      status = false;
+    }
+
+    return status;
+  }
+
+  const checkConditions = () =>  {
+    if (!generalConditions) {
+      alert("Vous devez accepter les conditions générales");
+    }
+    return generalConditions;
   }
 
   return (
@@ -86,7 +169,7 @@ const Register = ({ navigation }) => {
             onChangeText={setUsername}
           />
 
-          <Text style={styles.footerText}>Le nom d'utilisateur peut contenir des lettres entre 2 et 16 caractères.</Text>
+          <Text style={styles.footerText}>Le nom d'utilisateur peut contenir des lettres entre 4 et 16 caractères.</Text>
 
           <View style={styles.emptyContainer } >
             <TextInput
@@ -118,10 +201,10 @@ const Register = ({ navigation }) => {
 
           <View style={{ flexDirection: 'row', width: 304, marginBottom: 8 }}>
             <CheckBox
-              value={toggleCheckBox}
-              onValueChange={(newValue) => setToggleCheckBox(newValue)}
+              value={generalConditions}
+              onValueChange={(newValue) => setToggleGeneralConditions(newValue)}
               style={styles.checkbox}
-              color={toggleCheckBox ? "#FEC200" : undefined}
+              color={generalConditions ? "#FEC200" : undefined}
             />
             <Text style={styles.acceptanceText}>J’accepte les CG et la politique de  confidentialité</Text>
           </View>

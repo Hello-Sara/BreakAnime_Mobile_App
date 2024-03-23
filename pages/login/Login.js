@@ -3,6 +3,8 @@ import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity } from 'reac
 import MyButton from '../../composants/common/MyButton.js';
 import IconSee from '../../assets/icon/Icon_See.png';
 import IconNoSee from '../../assets/icon/Icon_NoSee.png';
+import axios from 'axios';
+
 
 const Login = ({ navigation }) => {
   const [identifier, setIdentifier] = useState(''); // Email or Username
@@ -12,7 +14,26 @@ const Login = ({ navigation }) => {
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
 
   const handleLogin = () => {
-    navigation.navigate('Search');
+    axios.post('http://167.99.194.218:3000/api/auth/login', {
+      email: identifier, 
+      username: identifier,
+      password: password,
+    })
+    .then(response => {
+      // // Stockez le token d'authentification pour une utilisation future
+      // localStorage.setItem('authToken', response.data.token);
+      // // Mettez à jour l'état pour indiquer que l'enregistrement a réussi
+      alert('Re-Bonjour !');
+      navigation.navigate('Search');
+    })
+    .catch(error => {
+      // Mettez à jour l'état avec le message d'erreur
+      if (error.response && error.response.data) {
+        console.log(error.response.data.message);
+      } else {
+        console.log('An error occurred', error);
+      }
+    });
   };
 
   return (

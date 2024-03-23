@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Image, TouchableOpacity, StyleSheet, Text, View, Dimensions,ActivityIndicator } from 'react-native';
+import { Image, TouchableOpacity, StyleSheet, Text, View, Dimensions, ActivityIndicator } from 'react-native';
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 import Search from './pages/search/Search';
@@ -33,7 +33,6 @@ export default function App() {
 
   useEffect(() => {
   	loadFonts()
-    
   }, []);
   
   if (!fontsLoaded) {
