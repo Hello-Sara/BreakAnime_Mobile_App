@@ -4,12 +4,14 @@ import Navbar from '../../composants/navigation/Navbar.js';
 
 const Search = ({navigation}) => {
     return (
-        <View style={styles.container}>
-            <ScrollView contentContainerStyle={styles.scrollView}>
-                <Text style={styles.text}>Section Recherche</Text>
-            </ScrollView>
-            <View><Navbar navigation={navigation}/></View>
+      <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.scrollView}>
+          <Text style={styles.text}>Section Recherche</Text>
+        </ScrollView>
+        <View>
+            <Navbar navigation={navigation} />
         </View>
+      </View>
     );
 };
 

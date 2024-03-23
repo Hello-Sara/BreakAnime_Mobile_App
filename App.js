@@ -12,6 +12,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import React, { useState,useEffect} from 'react';
 import * as Font from 'expo-font'; // Importez Font à partir de 'expo-font'
+import { ActiveTabProvider } from "./contexts/ActiveTabContext"; 
 
 const Stack = createNativeStackNavigator();
 
@@ -43,20 +44,22 @@ export default function App() {
   }
  
   return (
-    <NavigationContainer>
-      <Stack.Navigator 
-        initialRouteName="Home"
-        screenOptions={{ headerShown: false }} // Cacher la barre d'en-tête pour tous les écrans
-      >
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Register" component={Register} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Search" component={Search} />
-        <Stack.Screen name="Quiz" component={Quiz} />
-        <Stack.Screen name="List" component={List} />
-        <Stack.Screen name="Account" component={Account} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <ActiveTabProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Home"
+          screenOptions={{ headerShown: false }} // Cacher la barre d'en-tête pour tous les écrans
+        >
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Search" component={Search} />
+          <Stack.Screen name="Quiz" component={Quiz} />
+          <Stack.Screen name="List" component={List} />
+          <Stack.Screen name="Account" component={Account} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ActiveTabProvider>
   );
 }
 
