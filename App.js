@@ -6,6 +6,7 @@ import Search from './pages/search/Search';
 import Quiz from './pages/quiz/Quiz';
 import List from './pages/list/List';
 import Account from './pages/account/Account';
+import Navbar from './composants/navigation/Navbar';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -58,6 +59,9 @@ export default function App() {
           <Stack.Screen name="List" component={List} />
           <Stack.Screen name="Account" component={Account} />
         </Stack.Navigator>
+        <View>
+          <Navbar/>
+        </View>
       </NavigationContainer>
     </ActiveTabProvider>
   );

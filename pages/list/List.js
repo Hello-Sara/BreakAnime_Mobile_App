@@ -8,9 +8,6 @@ const List = ({navigation}) => {
             <ScrollView contentContainerStyle={styles.scrollView}>
                 <Text style={styles.text}>Section Liste</Text>
             </ScrollView>
-            <View>
-                <Navbar navigation={navigation} />
-            </View>
         </View>
     );
 };

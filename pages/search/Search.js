@@ -8,9 +8,6 @@ const Search = ({navigation}) => {
         <ScrollView contentContainerStyle={styles.scrollView}>
           <Text style={styles.text}>Section Recherche</Text>
         </ScrollView>
-        <View>
-            <Navbar navigation={navigation} />
-        </View>
       </View>
     );
 };

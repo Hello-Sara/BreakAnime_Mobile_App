@@ -7,10 +7,7 @@ const Account = ({navigation}) => {
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollView}>
           <Text style={styles.text}>Compte de l'utilisateur</Text>
-        </ScrollView>
-        <View>
-            <Navbar navigation={navigation} />
-        </View>
+        </ScrollView>        
       </View>
     );
 };

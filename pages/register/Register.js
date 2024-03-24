@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from "react";
 import { ScrollView, View, Text, TextInput, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import CheckBox from 'expo-checkbox';
 import MyButton from '../../composants/common/MyButton.js';
 import IconSee from '../../assets/icon/Icon_See.png';
 import IconNoSee from '../../assets/icon/Icon_NoSee.png';
 import axios from 'axios';
+import ActiveTabContext from "../../contexts/ActiveTabContext.js";
 
 
 const Register = ({ navigation }) => {
@@ -17,6 +18,7 @@ const Register = ({ navigation }) => {
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
   const [generalConditions, setToggleGeneralConditions] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const { activeIcon, setActiveIcon } = useContext(ActiveTabContext);
 
   const handleRegister = () => {
     axios.post('http://167.99.194.218:3000/api/auth/register', {
@@ -29,7 +31,9 @@ const Register = ({ navigation }) => {
       console.log('response', response);
       // // Stockez le token d'authentification pour une utilisation future
       //localStorage.setItem('authToken', response.data.token);
-      // // Mettez à jour l'état pour indiquer que l'enregistrement a réussi
+      // // Mettez à jour l'état pour indiquer que l'enregistrement a réussi      
+      setActiveIcon("search");
+      navigation.navigate("Search");
       alert('Bienvenue dans BreakAnime !')
       navigation.navigate('Search');
     })

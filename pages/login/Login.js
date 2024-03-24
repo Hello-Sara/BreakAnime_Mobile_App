@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from "react";
 import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import MyButton from '../../composants/common/MyButton.js';
 import IconSee from '../../assets/icon/Icon_See.png';
 import IconNoSee from '../../assets/icon/Icon_NoSee.png';
 import axios from 'axios';
+import ActiveTabContext from "../../contexts/ActiveTabContext.js";
 
 
 const Login = ({ navigation }) => {
@@ -12,6 +13,7 @@ const Login = ({ navigation }) => {
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
+  const { activeIcon, setActiveIcon } = useContext(ActiveTabContext);
 
   const handleLogin = () => {
     axios.post('http://167.99.194.218:3000/api/auth/login', {
@@ -24,6 +26,8 @@ const Login = ({ navigation }) => {
       // localStorage.setItem('authToken', response.data.token);
       // // Mettez à jour l'état pour indiquer que l'enregistrement a réussi
       alert('Re-Bonjour !');
+      
+      setActiveIcon("search");
       navigation.navigate('Search');
     })
     .catch(error => {
