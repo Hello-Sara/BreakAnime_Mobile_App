@@ -21,7 +21,7 @@ const Register = ({ navigation }) => {
   const { activeIcon, setActiveIcon } = useContext(ActiveTabContext);
 
   const handleRegister = () => {
-    axios.post('http://167.99.194.218:3000/api/auth/register', {
+    axios.post('https://api.breakanime.ninja/api/auth/register', {
       name: name,
       email: email, 
       username: username,

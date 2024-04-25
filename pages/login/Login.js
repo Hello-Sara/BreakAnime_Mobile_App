@@ -16,7 +16,7 @@ const Login = ({ navigation }) => {
   const { activeIcon, setActiveIcon } = useContext(ActiveTabContext);
 
   const handleLogin = () => {
-    axios.post('http://167.99.194.218:3000/api/auth/login', {
+    axios.post('https://api.breakanime.ninja/api/auth/login', {
       email: identifier, 
       username: identifier,
       password: password,
