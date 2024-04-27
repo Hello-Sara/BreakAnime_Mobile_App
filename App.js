@@ -6,6 +6,7 @@ import Search from './pages/search/Search';
 import Quiz from './pages/quiz/Quiz';
 import List from './pages/list/List';
 import Account from './pages/account/Account';
+import Research from './pages/search/Research';
 import Navbar from './composants/navigation/Navbar';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -58,6 +59,7 @@ export default function App() {
           <Stack.Screen name="Quiz" component={Quiz} />
           <Stack.Screen name="List" component={List} />
           <Stack.Screen name="Account" component={Account} />
+          <Stack.Screen name="Research" component={Research} />
         </Stack.Navigator>
         <View>
           <Navbar/>

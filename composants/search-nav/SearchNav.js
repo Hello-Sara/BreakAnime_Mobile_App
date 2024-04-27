@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import IconSearch from '../../composants/common/icons/IconSearchY.js';
 
-const SearchBar = () => {
+const SearchBar = ({ onFocus, onSearch }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = (query) => {
     setSearchQuery(query);
-    // Vous pouvez ajouter ici la logique de recherche
+    onSearch(query); // Appelle la fonction onSearch passée en prop avec le terme de recherche
   };
 
   const submitSearch = () => {
-    // Ajoutez ici la logique pour soumettre la recherche
+    onSearch(searchQuery); // Appelle la fonction onSearch passée en prop avec le terme de recherche
   };
 
   return (
@@ -23,6 +23,7 @@ const SearchBar = () => {
           placeholderTextColor="#858585"
           value={searchQuery}
           onChangeText={handleSearch}
+          onFocus={onFocus}
         />
         <TouchableOpacity style={styles.iconContainer} onPress={submitSearch}>
           <IconSearch color="#F2A007" />

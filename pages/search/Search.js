@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, StyleSheet, FlatList } from 'react-native';
 import Navbar from '../../composants/navigation/Navbar.js';
 import SearchBar from '../../composants/search-nav/SearchNav.js';
 import AnimeCard from '../../composants/cards/AnimeCards.js';
 
-const animeData = [
-  { id: '1', image: { uri: "https://cdn.myanimelist.net/images/anime/1361/138919.jpg" } },
-  { id: '2', image: { uri: "https://cdn.myanimelist.net/images/anime/1517/113383.jpg" } },
-  // Ajoutez plus de données ici
-];
 
 const Search = ({navigation}) => {
+  const [animeData, setAnimeData] = useState([]);
+
+  useEffect(() => {
+    fetch('https://api.breakanime.ninja/api/animes')
+      .then(response => response.json())
+      .then(data => setAnimeData(data));
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.searchBarContainer}>
-        <SearchBar />
+        <SearchBar onFocus={() => navigation.navigate('Research')} />
       </View>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Text style={styles.text}>Tout les animes</Text>
@@ -22,7 +25,7 @@ const Search = ({navigation}) => {
           data={animeData}
           renderItem={({ item }) => (
             <View style={styles.cardContainer}>
-              <AnimeCard image={item.image} />
+              <AnimeCard image={{uri: item.picture}} />
             </View>
           )}
           keyExtractor={item => item.id}
