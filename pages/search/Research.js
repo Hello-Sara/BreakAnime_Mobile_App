@@ -1,12 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, StyleSheet, FlatList } from 'react-native';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
+import { View, Text, ScrollView, StyleSheet, FlatList, BackHandler } from 'react-native';
 import SearchBar from '../../composants/search-nav/SearchNav.js';
 import Row from '../../composants/row/Row.js';
+import ActiveTabContext from "../../contexts/ActiveTabContext.js";
+import { useFocusEffect } from '@react-navigation/native';
+
 
 const renderItem = ({ item }) => <Row image={item.picture} title={item.titre} />;
 
 const Research = ({navigation}) => {
     const [animeData, setAnimeData] = useState([]);
+    const { activeIcon, setActiveIcon } = useContext(ActiveTabContext);
+    
+    useFocusEffect(
+        useCallback(() => {
+          const onBackPress = (e) => {
+            e.preventDefault();
+            setActiveIcon("search");
+          };
+    
+          navigation.addListener('beforeRemove', onBackPress);
+    
+          return () => navigation.removeListener('beforeRemove', onBackPress);
+        }, [navigation])
+      );
 
     const handleSearch = (searchTerm) => {
         fetch(`https://api.breakanime.ninja/api/anime/search?term=${searchTerm}`)

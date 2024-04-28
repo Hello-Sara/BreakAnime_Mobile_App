@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, ScrollView, StyleSheet, Image, Dimensions } from 'react-native';
-import Navbar from '../../composants/navigation/Navbar.js';
 import MyButton from '../../composants/common/MyButton.js';
 import EditButton from '../../composants/common/EditButton.js';
+import ActiveTabContext from "../../contexts/ActiveTabContext.js";
 
 
 
 
 const Account = ({navigation}) => {
   const [user, setUser] = useState(null);
+  const { activeIcon, setActiveIcon } = useContext(ActiveTabContext);
 
   // useEffect(() => {
   //     axios.get('URL_DE_VOTRE_API')
@@ -37,6 +38,7 @@ const Account = ({navigation}) => {
           // onPress={() => navigation.navigate('Home')}
           onPress={() => {
             // Reset the navigation state
+            setActiveIcon("Login");
             navigation.reset({
               index: 0,
               routes: [{ name: 'Home' }],

@@ -11,10 +11,12 @@ import ActiveTabContext from "../../contexts/ActiveTabContext.js";
 const Navbar = () => {
   const navigation = useNavigation();
   const { activeIcon, setActiveIcon } = useContext(ActiveTabContext);
+  
   if (
     activeIcon === "Register" ||
     activeIcon === "Login" ||
-    activeIcon === "Home"
+    activeIcon === "Home"  ||
+    activeIcon === "Research"
   )
     return null;
   

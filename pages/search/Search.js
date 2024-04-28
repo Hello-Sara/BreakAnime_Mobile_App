@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, ScrollView, StyleSheet, FlatList } from 'react-native';
 import Navbar from '../../composants/navigation/Navbar.js';
 import SearchBar from '../../composants/search-nav/SearchNav.js';
 import AnimeCard from '../../composants/cards/AnimeCards.js';
+import ActiveTabContext from "../../contexts/ActiveTabContext.js";
 
 
 const Search = ({navigation}) => {
   const [animeData, setAnimeData] = useState([]);
+  const { activeIcon, setActiveIcon } = useContext(ActiveTabContext);
 
   useEffect(() => {
     fetch('https://api.breakanime.ninja/api/animes')
@@ -17,7 +19,10 @@ const Search = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.searchBarContainer}>
-        <SearchBar onFocus={() => navigation.navigate('Research')} />
+        <SearchBar onFocus={() => {
+          navigation.navigate('Research')
+          setActiveIcon("Research");
+        }} />
       </View>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Text style={styles.text}>Tout les animes</Text>
