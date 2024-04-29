@@ -16,7 +16,8 @@ const Navbar = () => {
     activeIcon === "Register" ||
     activeIcon === "Login" ||
     activeIcon === "Home"  ||
-    activeIcon === "Research"
+    activeIcon === "Research" ||
+    activeIcon === "AnimeDetails"
   )
     return null;
   

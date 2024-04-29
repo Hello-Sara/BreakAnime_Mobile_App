@@ -7,6 +7,7 @@ import Quiz from './pages/quiz/Quiz';
 import List from './pages/list/List';
 import Account from './pages/account/Account';
 import Research from './pages/search/Research';
+import AnimeDetails from './pages/animeDetails/AnimeDetails';
 import Navbar from './composants/navigation/Navbar';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -60,6 +61,7 @@ export default function App() {
           <Stack.Screen name="List" component={List} />
           <Stack.Screen name="Account" component={Account} />
           <Stack.Screen name="Research" component={Research} />
+          <Stack.Screen name="AnimeDetails" component={AnimeDetails} />
         </Stack.Navigator>
         <View>
           <Navbar/>

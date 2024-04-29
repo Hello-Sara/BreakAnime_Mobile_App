@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { View, Text, ScrollView, StyleSheet, FlatList } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import Navbar from '../../composants/navigation/Navbar.js';
 import SearchBar from '../../composants/search-nav/SearchNav.js';
 import AnimeCard from '../../composants/cards/AnimeCards.js';
@@ -30,7 +30,13 @@ const Search = ({navigation}) => {
           data={animeData}
           renderItem={({ item }) => (
             <View style={styles.cardContainer}>
-              <AnimeCard image={{uri: item.picture}} />
+              <TouchableOpacity onPress={() => {
+                  setActiveIcon("AnimeDetails");
+                  navigation.navigate('AnimeDetails', { anime: item }
+                );
+              }}>
+                <AnimeCard image={{uri: item.picture}} />
+              </TouchableOpacity>
             </View>
           )}
           keyExtractor={item => item.id}

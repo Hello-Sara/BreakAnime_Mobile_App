@@ -2,45 +2,49 @@ import React from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-const Details = () => {
+const Details = ({ image, title, episodes, synonyms, genres, animeSeason, status, description }) => {
     return (
         <View >
             <View style={styles.boxContainer}>
+                <Image source={{ uri: image }} style={styles.backgroundImage} />
                 <LinearGradient
                     colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.8)']}
                     start={{x: 0, y: 0}}
                     end={{x: 0, y: 1}}
                     style={styles.gradient}
                 >
-                    <Text style={styles.title}>Your Title Here</Text>
-                    <Text style={styles.subtitle}>X épisode</Text>
+                    <Text style={styles.title}>{title}</Text>
+                    <Text style={styles.subtitle}>{episodes} épisode</Text>
                 </LinearGradient>
             </View>
             <Text style={styles.alternativeTitle}>Titre alternatif</Text>
-            <Text style={styles.text}>Texte</Text>
+            <Text style={styles.text}>{synonyms}</Text>
 
             <Text style={styles.alternativeTitle}>Genres</Text>
-            <Text style={styles.text}>Texte</Text>
+            <Text style={styles.text}>{genres}</Text>
 
             <Text style={styles.alternativeTitle}>Saison et année</Text>
-            <Text style={styles.text}>Texte</Text>
+            <Text style={styles.text}>{animeSeason}</Text>
 
             <Text style={styles.alternativeTitle}>Statut</Text>
-            <Text style={styles.text}>Texte</Text>
+            <Text style={styles.text}>{status}</Text>
 
             <Text style={styles.alternativeTitle}>Synopsis</Text>
-            <Text style={styles.text}>Texte</Text>
+            <Text style={styles.text}>{description}</Text>
         </View>
     );
 };
-
-const MemoizedDetails = React.memo(Details);
 
 const styles = StyleSheet.create({
     boxContainer: {
         width: '100%',
         height: 164,
         backgroundColor: '#FEC200',
+    },
+    backgroundImage: {
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
     },
     gradient: {
         flex: 1,
