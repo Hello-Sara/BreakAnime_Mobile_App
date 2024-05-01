@@ -15,9 +15,9 @@ const AnimeDetails = ({ route }) => {
                 image={picture}
                 title={titre}
                 episodes={episodes}
-                synonyms={synonyms.map(synonym => synonym.name).join(', ')} // Convertir les synonymes en une chaîne de caractères séparée par une virgule
-                genres={genres.map(genre => genre.name).join(', ')} // Convertir les genres en une chaîne de caractères séparée par une virgule
-                animeSeason={`${animeSeason.season} ${animeSeason.year}`} // Concaténer la saison et l'année
+                synonyms={synonyms ? synonyms.map(synonym => synonym.name).join(', ') : ''} // Vérifier si synonyms existe
+                genres={genres ? genres.map(genre => genre.name).join(', ') : ''} // Vérifier si genres existe
+                animeSeason={animeSeason ? `${animeSeason.season} ${animeSeason.year}` : ''} // Vérifier si animeSeason existe
                 status={status === 0 ? 'Terminé' : 'En cours'} // Convertir le statut en texte
                 description={description}
             />

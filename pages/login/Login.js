@@ -5,6 +5,7 @@ import IconSee from '../../assets/icon/Icon_See.png';
 import IconNoSee from '../../assets/icon/Icon_NoSee.png';
 import axios from 'axios';
 import ActiveTabContext from "../../contexts/ActiveTabContext.js";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const Login = ({ navigation }) => {
@@ -21,16 +22,18 @@ const Login = ({ navigation }) => {
       username: identifier,
       password: password,
     })
-    .then(response => {
-      // // Stockez le token d'authentification pour une utilisation future
-      // localStorage.setItem('authToken', response.data.token);
-      // // Mettez à jour l'état pour indiquer que l'enregistrement a réussi
-      alert('Re-Bonjour !');
-      
-      setActiveIcon("search");
-      navigation.navigate('Search');
+    .then(async response => {
+      if(response.data.token) {
+        await AsyncStorage.setItem('authToken', response.data.token);
+        alert('Re-Bonjour !');
+        setActiveIcon("search");
+        navigation.navigate('Search');
+      } else {
+        alert('Erreur de connexion');
+      }
     })
     .catch(error => {
+      console.log(error);
       // Mettez à jour l'état avec le message d'erreur
       if (error.response && error.response.data) {
         console.log(error.response.data.message);

@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react';
-import { View, Text, ScrollView, StyleSheet, FlatList, BackHandler } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, FlatList, BackHandler, TouchableOpacity } from 'react-native';
 import SearchBar from '../../composants/search-nav/SearchNav.js';
 import Row from '../../composants/row/Row.js';
 import ActiveTabContext from "../../contexts/ActiveTabContext.js";
 import { useFocusEffect } from '@react-navigation/native';
 
 
-const renderItem = ({ item }) => <Row image={item.picture} title={item.titre} />;
+// const renderItem = ({ item }) => <Row image={item.picture} title={item.titre} anime={item} />;
 
 const Research = ({navigation}) => {
     const [animeData, setAnimeData] = useState([]);
@@ -42,7 +42,11 @@ const Research = ({navigation}) => {
         <FlatList
             data={animeData}
             keyExtractor={(item) => item.id.toString()}
-            renderItem={renderItem}
+            renderItem={({ item }) => (
+              <TouchableOpacity onPress={() => navigation.navigate('AnimeDetails', { anime: item })}>
+                <Row image={item.picture} title={item.titre} anime={item} />
+              </TouchableOpacity>
+            )}
             windowSize={30}
         />
         </View>

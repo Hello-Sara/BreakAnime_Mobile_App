@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#0B0B0B',
   },
   searchBarContainer: {
-      marginTop: 46, // Marge en haut de 46px
+      marginTop: 50, // Marge en haut de 46px
   },
   scrollView: {
       flex: 1,
