@@ -43,7 +43,7 @@ const Research = ({navigation}) => {
             data={animeData}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
-              <TouchableOpacity onPress={() => navigation.navigate('AnimeDetails', { anime: item })}>
+              <TouchableOpacity onPress={() => navigation.navigate('AnimeDetails', { anime: item, previousPage: 'Research' })}>
                 <Row image={item.picture} title={item.titre} anime={item} />
               </TouchableOpacity>
             )}

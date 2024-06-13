@@ -1,13 +1,28 @@
-import React, { useContext }  from 'react';
+import React, { useContext, useEffect }  from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import Details from '../../composants/details/Details.js';
 import ActiveTabContext from "../../contexts/ActiveTabContext.js";
+import { useNavigation } from '@react-navigation/native';
+
 
 const AnimeDetails = ({ route }) => {
+    const navigation = useNavigation();
     const { activeIcon, setActiveIcon } = useContext(ActiveTabContext);
-    const { anime } = route.params;
+    const { anime, previousPage } = route.params;
 
+    console.log('route', route);
     const { picture, titre, episodes, synonyms, genres, animeSeason, status, description } = anime;
+
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('beforeRemove', (e) => {
+            e.preventDefault();
+            setActiveIcon(previousPage);
+            navigation.dispatch(e.data.action);
+        });
+
+        return unsubscribe;
+    }, [navigation, setActiveIcon]);
+
 
     return (
         <ScrollView style={styles.container}>

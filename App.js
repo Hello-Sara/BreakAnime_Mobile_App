@@ -3,12 +3,14 @@ import { Image, TouchableOpacity, StyleSheet, Text, View, Dimensions, ActivityIn
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 import Search from './pages/search/Search';
-import Quiz from './pages/quiz/Quiz';
+import Quiz from './pages/quizz/Quiz';
 import List from './pages/list/List';
 import Account from './pages/account/Account';
 import Research from './pages/search/Research';
 import AnimeDetails from './pages/animeDetails/AnimeDetails';
 import Navbar from './composants/navigation/Navbar';
+import Mcq from './pages/quizz/Mcq';
+import Recommendation from './pages/quizz/Recommendation';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -62,6 +64,8 @@ export default function App() {
           <Stack.Screen name="Account" component={Account} />
           <Stack.Screen name="Research" component={Research} />
           <Stack.Screen name="AnimeDetails" component={AnimeDetails} />
+          <Stack.Screen name="Mcq" component={Mcq} />
+          <Stack.Screen name="Recommendation" component={Recommendation} />
         </Stack.Navigator>
         <View>
           <Navbar/>

@@ -78,10 +78,7 @@ const Account = ({navigation}) => {
             // Reset the navigation state
             setActiveIcon("Login");
             await AsyncStorage.removeItem('authToken');
-            navigation.reset({
-              index: 0,
-              routes: [{ name: 'Home' }],
-            });
+            navigation.navigate('Login');
           }}
         />
       </ScrollView>     

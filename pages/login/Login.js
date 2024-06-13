@@ -24,7 +24,8 @@ const Login = ({ navigation }) => {
     })
     .then(async response => {
       if(response.data.token) {
-        await AsyncStorage.setItem('authToken', response.data.token);
+        await AsyncStorage.setItem('authToken', response.data.token.token);
+        await AsyncStorage.setItem('userId', response.data.token.id.toString());
         alert('Re-Bonjour !');
         setActiveIcon("search");
         navigation.navigate('Search');
