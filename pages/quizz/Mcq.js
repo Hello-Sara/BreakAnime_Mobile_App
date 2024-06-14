@@ -9,7 +9,7 @@ const Mcq = ({ navigation }) => {
     const [questions, setQuestions] = useState([]);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [tags, setTags] = useState([]);
-    const [reversedTags, setReversedTags] = useState([]);
+    const [reversedTags, setReversedTags] = useState([]);lE 
 
     useEffect(() => {
         const fetchQuestions = async () => {
@@ -48,7 +48,6 @@ const Mcq = ({ navigation }) => {
             } catch (error) {
                 console.error('Erreur lors de la mise à jour des tags:', error);
             }
-            
         }
 
         console.log('Index de la question actuelle:', currentQuestionIndex);

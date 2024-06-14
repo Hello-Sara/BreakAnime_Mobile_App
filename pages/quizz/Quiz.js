@@ -22,7 +22,7 @@ const Quiz = ({navigation}) => {
     return (
       <View style={styles.container}>
         <View style={styles.button}>
-        <MyButton text="Faire un quiz" onPress={() => { setActiveIcon('Mcq'); navigation.navigate('Mcq'); }  } />
+        <MyButton text="Faire un quiz" onPress={() => { setActiveIcon('Mcq'); navigation.navigate('Mcq');}}/>
         </View>
         <ScrollView contentContainerStyle={styles.scrollView}>
           <Text style={styles.text}>Ancien résultat</Text>

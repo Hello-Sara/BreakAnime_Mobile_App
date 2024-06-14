@@ -6,7 +6,7 @@ import ActiveTabContext from "../../contexts/ActiveTabContext.js";
 
 const Recommendation = ({route, navigation}) => {
   
-  const { tags, id } = route.params; // Assurez-vous que 'id' est passé correctement à ce composant
+  const { tags, id } = route.params; 
   const [animeData, setAnimeData] = useState([]);
   const { activeIcon, setActiveIcon } = useContext(ActiveTabContext);
 
@@ -22,14 +22,14 @@ const Recommendation = ({route, navigation}) => {
           })
           console.log('response', response.data)
           console.log('anime count', response.data.length)
-          setAnimeData(response.data); // Supposons que l'API renvoie directement la liste des anime
+          setAnimeData(response.data); 
       } catch (error) {
           console.error("Erreur lors de la récupération des recommandations :", error);
       }
     };
 
     fetchRecommendations();
-  }, [tags, id]); // Refaire la requête si les tags ou l'id changent
+  }, [tags, id]); 
 
 
   return (
