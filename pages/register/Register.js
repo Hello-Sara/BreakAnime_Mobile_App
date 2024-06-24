@@ -105,23 +105,13 @@ const Register = ({ navigation }) => {
       status = false;
     }
 
-    if(password.length < 6) {
-      alert("Le mot de passe doit contenir au moins 6 caractères");
+    if(password.length < 10) {
+      alert("Le mot de passe doit contenir au moins 10 caractères");
       status = false;
     }
 
-    if(confirmPassword.length < 6) {
-      alert("Le mot de passe de confirmation doit contenir au moins 6 caractères");
-      status = false;
-    }
-
-    if(password.length > 16) {
-      alert("Le mot de passe doit contenir au maximum 16 caractères");
-      status = false;
-    }
-
-    if(confirmPassword.length > 16) {
-      alert("Le mot de passe de confirmation doit contenir au maximum 16 caractères");
+    if(confirmPassword.length < 10) {
+      alert("Le mot de passe de confirmation doit contenir au moins 10 caractères");
       status = false;
     }
 
@@ -153,7 +143,7 @@ const Register = ({ navigation }) => {
           <TextInput
             style={styles.input}
             placeholder="Prénom"
-            placeholderTextColor="#555454" // Pour rendre le texte de l'espace réservé #555454
+            placeholderTextColor="#555454" 
             value={name}
             onChangeText={setName}
           />
@@ -216,7 +206,7 @@ const Register = ({ navigation }) => {
           <Text style={styles.footerText}>Pour créer un compte BreakAnime, vous devez accepter les Conditions générales et confirmer que vous avez lu la Politique de confidentialité.</Text>
 
           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginBottom: 16, marginTop: 8 }}>
-            <MyButton text="S'inscrire" onPress={ComfirmRegister} />
+            <MyButton text="S'inscrire" onPress={ComfirmRegister}/>
           </View>
 
           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

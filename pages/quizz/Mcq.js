@@ -9,7 +9,7 @@ const Mcq = ({ navigation }) => {
     const [questions, setQuestions] = useState([]);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [tags, setTags] = useState([]);
-    const [reversedTags, setReversedTags] = useState([]);lE 
+    const [reversedTags, setReversedTags] = useState([]); 
 
     useEffect(() => {
         const fetchQuestions = async () => {

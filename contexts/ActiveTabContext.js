@@ -4,7 +4,7 @@ import React, { createContext, useState } from "react";
 const ActiveTabContext = createContext();
 
 export const ActiveTabProvider = ({ children }) => {
-  const [activeIcon, setActiveIcon] = useState("Home"); // Mettez ici la valeur par défaut de l'onglet actif
+  const [activeIcon, setActiveIcon] = useState("Home"); 
 
   return (
     <ActiveTabContext.Provider value={{ activeIcon, setActiveIcon }}>
@@ -14,3 +14,5 @@ export const ActiveTabProvider = ({ children }) => {
 };
 
 export default ActiveTabContext;
+
+
